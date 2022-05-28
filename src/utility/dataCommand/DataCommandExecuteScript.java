@@ -3,6 +3,7 @@ package utility.dataCommand;
 import gorod.Human;
 import utility.CityCreator;
 import utility.CommandManager;
+import utility.Request;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -31,7 +32,7 @@ public class DataCommandExecuteScript extends DataCommand {
                         response = new StringBuilder();
                         if (in == 10){
                             if (str_out[0].equals("insert") || str_out[0].equals("remove_lower") || str_out[0].equals("replace_if_greater") || str_out[0].equals("update")){
-                                CityCreator creator = new CityCreator();
+                                String[] creator = new String[12];
                                 short t_data = 0;
                                 do {
                                     try{
@@ -41,10 +42,10 @@ public class DataCommandExecuteScript extends DataCommand {
                                     }
                                     if (in == 10){
                                         if (t_data == 10 ){
-                                            if (response.toString().equals("")){creator.set_data(13, "0");}
-                                            else {creator.set_data(13, "0");}
+                                            if (response.toString().equals("")){creator[13] = "0";}
+                                            else {creator[13] = "1";}
                                         }
-                                        creator.set_data(t_data,response.toString());
+                                        creator[t_data] = response.toString();
                                         response = new StringBuilder();
                                         t_data++;
                                     }
@@ -53,9 +54,8 @@ public class DataCommandExecuteScript extends DataCommand {
                                         response.append(inChar);
                                     }
                                 } while (t_data<12);
-                                creator.set_data(12, str_out[1]);
-                                CommandManager.execute(str_out[0], creator);
-                                creator.clear_data();
+                                creator[12] = str_out[1];
+                                CommandManager.execute(new Request(str_out[0], creator));
                             }
                             else if (str_out[0].equals("filter_less_than_governor")){
                                 do {
@@ -94,12 +94,12 @@ public class DataCommandExecuteScript extends DataCommand {
                                             governor.setBirthday(ZonedDateTime.parse(response.toString(),Parser));
                                         } catch (Exception e) {System.out.println("неправильная дата");}
                                     }
-                                    CommandManager.execute("filter_less_than_governor", governor);
+                                    CommandManager.execute(new Request( "filter_less_than_governor", governor));
                                 }
                                 response = new StringBuilder();
                             }
                             else {
-                                CommandManager.execute(str_out[0],str_out[1]);
+                                CommandManager.execute(new Request(str_out[0],str_out[1]));
                             }
                             str_out[0]=null;
                             str_out[1]=null;

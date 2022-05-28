@@ -16,6 +16,13 @@ public class CityCreator {
         data = new String[14];
         city = new City();
     }
+    public CityCreator(String[] creatorData){
+        if (creatorData.length == 14){
+            data = creatorData;
+        }
+        else data = new String[14];
+        city = new City();
+    }
     public void clear_data(){
         this.data = new String[14];
         city = new City();

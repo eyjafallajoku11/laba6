@@ -7,10 +7,11 @@ import java.util.Objects;
 
 import static java.lang.System.out;
 public class CreatorCommandInsert extends CreatorCommand {
-    public void execute(CityCreator creator){
+    public void execute(String[] creatorData){
         try {
-            if (!HashMapController.contains_ID(Long.parseLong(creator.get_data(12)))) {
+            if (!HashMapController.contains_ID(Long.parseLong(creatorData[12]))) {
                 try {
+                    CityCreator creator = new CityCreator(creatorData);
                     creator.create_city();
                     creator.add_city_to_map();
                     if (Objects.isNull(HashMapController.getInitialisation())) {

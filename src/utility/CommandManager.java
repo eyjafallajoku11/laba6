@@ -31,19 +31,20 @@ public class CommandManager {
         humanCommandMap.put(name, cmd);
     }
 
-    public static void execute(String input1, String input2){
-        BareCommandHistory.add_to_history(input1);
-        if (creatorCommandMap.containsKey(input1)){
-            creatorCommandMap.get(input1).execute(CollectingDataForCityCreator.execute(input2));
+    public static void execute(Request request){
+        String commandName = request.getCommandName();
+        BareCommandHistory.add_to_history(commandName);
+        if (creatorCommandMap.containsKey(commandName)){
+            creatorCommandMap.get(commandName).execute(request.getCreatorArgument());
         }
-        if (humanCommandMap.containsKey(input1)){
-            humanCommandMap.get(input1).execute(CollectingDataForGovernor.execute());
+        if (humanCommandMap.containsKey(commandName)){
+            humanCommandMap.get(commandName).execute(request.getHumanArgument());
         }
-        if (dataCommandMap.containsKey(input1)){
-            dataCommandMap.get(input1).execute(input2);
+        if (dataCommandMap.containsKey(commandName)){
+            dataCommandMap.get(commandName).execute(request.getDataArgument());
         }
-        if (bareCommandMap.containsKey(input1)){
-            bareCommandMap.get(input1).execute();
+        if (bareCommandMap.containsKey(commandName)){
+            bareCommandMap.get(commandName).execute();
         }
     }
 //    public static void execute(String[] input){
@@ -123,16 +124,16 @@ public class CommandManager {
 //        }
 //
 //    }
-    public static void execute(String input, CityCreator creator){
-        BareCommandHistory.add_to_history(input);
-        if (creatorCommandMap.containsKey(input)){
-            creatorCommandMap.get(input).execute(creator);
-        }
-    }
-    public static void execute(String input, Human governor){
-        BareCommandHistory.add_to_history(input);
-        if (humanCommandMap.containsKey(input)){
-            humanCommandMap.get(input).execute(governor);
-        }
-    }
+//    public static void execute(String input, CityCreator creator){
+//        BareCommandHistory.add_to_history(input);
+//        if (creatorCommandMap.containsKey(input)){
+//            creatorCommandMap.get(input).execute(creator);
+//        }
+//    }
+//    public static void execute(String input, Human governor){
+//        BareCommandHistory.add_to_history(input);
+//        if (humanCommandMap.containsKey(input)){
+//            humanCommandMap.get(input).execute(governor);
+//        }
+//    }
 }
