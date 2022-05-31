@@ -29,6 +29,6 @@ public class Main {
         CommandManager.dataRegister("remove_all_by_government", new DataCommandRemoveAllByGovernment());
 
         CommandManager.humanRegister("filter_less_than_governor", new HumanCommandFilterLessThanGovernor());}
-        Server.connect(1567);
+        Server.run(1567);
     }
 }
