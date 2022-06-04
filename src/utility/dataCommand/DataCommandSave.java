@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class DataCommandSave extends DataCommand {
-    public void execute(String data) {
+    public String execute(String data) {
         try {
             FileWriter fw = new FileWriter(data, false);
             BufferedWriter buffWriter = new BufferedWriter(fw);
@@ -77,6 +77,9 @@ public class DataCommandSave extends DataCommand {
         }
         catch (IOException e){
             System.out.println("ты шо-то напутал");
+            return ("ты шо-то напутал");
         }
+        System.out.println("коллекция сохранена");
+        return "коллекция сохранена";
     }
 }

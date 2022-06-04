@@ -3,13 +3,15 @@ package utility.bareCommand;
 import utility.HashMapController;
 
 public class BareCommandShow extends BareCommand {
-    public void execute(){
-        if (HashMapController.ID_set().isEmpty()) System.out.println("коллекция пустая");
+    public String execute(){
+        if (HashMapController.ID_set().isEmpty()) return("коллекция пустая");
         else {
+            StringBuilder output = new StringBuilder();
             for (long keys : HashMapController.ID_set()) {
-                System.out.println(HashMapController.get_by_ID(keys).toString());
-                System.out.println();
+                output.append(HashMapController.get_by_ID(keys).toString());
+                output.append("\n");
             }
+            return output.toString();
         }
     }
 }

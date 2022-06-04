@@ -8,12 +8,16 @@ public class BareCommandHistory extends BareCommand {
         count++;
         if (count == 8) count = 0;
     }
-    public void execute(){
+    public String execute(){
+        StringBuilder output = new StringBuilder();
         for (short i = count; i<8; i++){
-            System.out.println(history[i]);
+            output.append(history[i]);
+            output.append("\n");
         }
         for (short i = 0; i<count; i++){
-            System.out.println(history[i]);
+            output.append(history[i]);
+            output.append("\n");
         }
+        return output.toString();
     }
 }

@@ -8,16 +8,15 @@ import static java.lang.System.out;
 
 
 public class HumanCommandFilterLessThanGovernor extends HumanCommand {
-    public void execute(Human governor) {
-//        try {
-            out.println("фильтруем пацанов");
-            for (long keys : HashMapController.ID_set()) {
-                City city = HashMapController.get_by_ID(keys);
-                if (city.getGovernor().compareTo(governor) > 0) {
-                    out.println(city);
-                    out.println();
-                }
+    public String execute(Human governor) {
+        StringBuilder output = new StringBuilder();
+        for (long keys : HashMapController.ID_set()) {
+            City city = HashMapController.get_by_ID(keys);
+            if (city.getGovernor().compareTo(governor) > 0) {
+                output.append(city);
+                output.append("\n");
             }
-//        } catch (NullPointerException e){out.println("а где");}
+        }
+        return output.toString();
     }
 }

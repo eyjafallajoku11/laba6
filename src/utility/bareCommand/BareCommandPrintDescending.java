@@ -6,11 +6,13 @@ import utility.HashMapController;
 import java.util.TreeMap;
 
 public class BareCommandPrintDescending extends BareCommand {
-    public void execute() {
+    public String execute() {
         TreeMap<Long, City> sorted = new TreeMap<>(HashMapController.getMap());
+        StringBuilder output = new StringBuilder();
         for (long key : sorted.keySet()){
-            System.out.println(sorted.get(key));
-            System.out.println();
+            output.append(sorted.get(key));
+            output.append("\n");
         }
-        }
+        return output.toString();
     }
+}

@@ -1,5 +1,5 @@
 package utility.creatorCommand;
 
 public abstract class CreatorCommand {
-    public abstract void execute(String[] creator);
+    public abstract String execute(String[] creator);
 }

@@ -6,20 +6,24 @@ import utility.HashMapController;
 import java.util.Iterator;
 
 public class CreatorCommandRemoveLower extends CreatorCommand {
-    public void execute(String[] creatorData) {
+    public String execute(String[] creatorData) {
         CityCreator creator = new CityCreator(creatorData);
         try {
             creator.create_city();
             Iterator<Long> it = HashMapController.getMap().keySet().iterator();
+            int count =0;
             while (it.hasNext()) {
                 long key = it.next();
                 if (creator.getCity().compareTo(HashMapController.get_by_ID(key))>0){
                     it.remove();
+                    count++;
                 }
-            }        } catch (NullPointerException e) {
-            System.out.println("не хватает обязательных переменных, город не создан");}
+            }
+            return "удалено " + count + " городов";
+        } catch (NullPointerException e) {
+            return ("не хватает обязательных переменных, город не создан");}
         catch (Exception e) {
-            System.out.println("ошибка в формате данных, город не создан");}
+            return ("ошибка в формате данных, город не создан");}
 
     }
 }

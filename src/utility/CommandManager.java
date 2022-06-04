@@ -31,21 +31,22 @@ public class CommandManager {
         humanCommandMap.put(name, cmd);
     }
 
-    public static void execute(Request request){
+    public static String execute(Request request){
         String commandName = request.getCommandName();
         BareCommandHistory.add_to_history(commandName);
         if (creatorCommandMap.containsKey(commandName)){
-            creatorCommandMap.get(commandName).execute(request.getCreatorArgument());
+            return creatorCommandMap.get(commandName).execute(request.getCreatorArgument());
         }
         if (humanCommandMap.containsKey(commandName)){
-            humanCommandMap.get(commandName).execute(request.getHumanArgument());
+            return humanCommandMap.get(commandName).execute(request.getHumanArgument());
         }
         if (dataCommandMap.containsKey(commandName)){
-            dataCommandMap.get(commandName).execute(request.getDataArgument());
+            return dataCommandMap.get(commandName).execute(request.getDataArgument());
         }
         if (bareCommandMap.containsKey(commandName)){
-            bareCommandMap.get(commandName).execute();
+            return bareCommandMap.get(commandName).execute();
         }
+        else return "";
     }
 //    public static void execute(String[] input){
 //        CommandHistory.add_to_history(input[0]);

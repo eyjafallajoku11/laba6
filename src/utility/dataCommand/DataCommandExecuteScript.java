@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import static java.lang.System.out;
 
 public class DataCommandExecuteScript extends DataCommand {
-    public static void readByLine(BufferedInputStream Buf_in) {
+    public static String readByLine(BufferedInputStream Buf_in) {
         StringBuilder response = new StringBuilder();
         String[] str_out = new String[2];
         try {
@@ -38,7 +38,7 @@ public class DataCommandExecuteScript extends DataCommand {
                                     try{
                                         in = Buf_in.read();
                                     } catch (IOException e ){
-                                        out.println("чет фигня какая-то со скриптом");
+                                        return ("что-то с файлом");
                                     }
                                     if (in == 10){
                                         if (t_data == 10 ){
@@ -63,7 +63,7 @@ public class DataCommandExecuteScript extends DataCommand {
                                         in = Buf_in.read();
 //                                        out.println((char) in);
                                     } catch (IOException e ){
-                                        out.println("чет фигня какая-то со скриптом");
+                                        return ("чет фигня какая-то со скриптом");
                                     }
                                     if (in != 10){
                                         inChar= (char) in;
@@ -79,7 +79,7 @@ public class DataCommandExecuteScript extends DataCommand {
                                             in = Buf_in.read();
 //                                            out.println((char) in);
                                         } catch (IOException e ){
-                                            out.println("чет фигня какая-то со скриптом");
+                                            return ("чет фигня какая-то со скриптом");
                                         }
                                         if (in != 10){
                                             inChar = (char) in;
@@ -92,7 +92,9 @@ public class DataCommandExecuteScript extends DataCommand {
                                             String pattern = "dd-MM-yyyy HH:mm:ss";
                                             DateTimeFormatter Parser = DateTimeFormatter.ofPattern(pattern).withZone(ZoneId.systemDefault());
                                             governor.setBirthday(ZonedDateTime.parse(response.toString(),Parser));
-                                        } catch (Exception e) {System.out.println("неправильная дата");}
+                                        } catch (Exception e) {
+                                            return ("неправильная дата");
+                                        }
                                     }
                                     CommandManager.execute(new Request( "filter_less_than_governor", governor));
                                 }
@@ -112,17 +114,18 @@ public class DataCommandExecuteScript extends DataCommand {
                 }
             } while (in != -1);
         } catch (IOException e) {
-            out.println("фигня а не файл");
+            return ("что-то с файлом");
         }
+        return "";
     }
 
-    public void execute(String data) {
+    public String execute(String data) {
         try (BufferedInputStream inp_str = new BufferedInputStream(new FileInputStream(data))) {
-            readByLine(inp_str);
+            return readByLine(inp_str);
         } catch (FileNotFoundException e) {
-            out.println("файла по этому адресу нет");
+            return ("файла по этому адресу нет");
         } catch (IOException e) {
-            out.println("файл есть, а фигня всё равно");
+            return ("что-то не так");
         }
     }
 }

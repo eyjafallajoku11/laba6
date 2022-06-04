@@ -3,8 +3,8 @@ package utility.bareCommand;
 import static java.lang.System.out;
 
 public class BareCommandHelp extends BareCommand {
-    public void execute(){
-        out.println("help : вывести справку по доступным командам\n" +
+    public String execute(){
+        return ("help : вывести справку по доступным командам\n" +
                 "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
                 "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
                 "insert id {element} : добавить новый элемент с заданным ключом(id)\n" +

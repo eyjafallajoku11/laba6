@@ -16,11 +16,10 @@ import java.util.Objects;
 import static java.lang.System.out;
 
 public class DataCommandOpenFile extends DataCommand {
-    public void execute(String data){
+    public String execute(String data){
         if (Objects.isNull(HashMapController.getInitialisation())) {
             HashMapController.initialise();
         }
-        out.println("trying to open "+data+"...");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         CityCreator inp=new CityCreator();
         try (BufferedInputStream inp_str = new BufferedInputStream(new FileInputStream(data))) {
@@ -29,17 +28,17 @@ public class DataCommandOpenFile extends DataCommand {
             if (doc.hasChildNodes()) {
                 readNote(doc.getChildNodes(),inp);
             }
-            out.println("collection imported");
+            return ("collection imported");
         } catch (FileNotFoundException e){
-            out.println("файла по этому адресу нет");
+            return ("файла по этому адресу нет");
         } catch (NullPointerException e){
-            out.println("а че открывать то");
+            return("а че открывать то");
         }
         catch (ParserConfigurationException | SAXException e) {
-            out.println("в файле ошибка, как его читать-то");
+            return ("в файле ошибка, как его читать-то");
         }
         catch (Exception e){
-            out.println("ваще херня какая-то");}
+            return ("вообще всё плохо");}
     }
     private static void readNote(NodeList nodeList, CityCreator inp) {
         for (int j = 0; j < nodeList.getLength(); j++) {

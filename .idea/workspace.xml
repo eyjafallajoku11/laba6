@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a15e28f-772f-48c7-a24f-5a50f2a025d0" name="Changes" comment="отправка пакетами" />
+    <list default="true" id="0a15e28f-772f-48c7-a24f-5a50f2a025d0" name="Changes" comment="отправка пакетами">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandClear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandClear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandExit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandExit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandHelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandHelp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandPrintDescending.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandPrintDescending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/bareCommand/BareCommandShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandInsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandInsert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandRemoveLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandRemoveLower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandReplaceIfGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandReplaceIfGreater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/creatorCommand/CreatorCommandUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandOpenFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandOpenFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandRemoveAllByGovernment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandRemoveAllByGovernment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandRemoveKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandRemoveKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/dataCommand/DataCommandSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/humanCommand/HumanCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/humanCommand/HumanCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/humanCommand/HumanCommandFilterLessThanGovernor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/humanCommand/HumanCommandFilterLessThanGovernor.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +95,8 @@
       <workItem from="1653994286932" duration="385000" />
       <workItem from="1653994684856" duration="57000" />
       <workItem from="1654014837033" duration="8610000" />
+      <workItem from="1654193689536" duration="187000" />
+      <workItem from="1654346565855" duration="8767000" />
     </task>
     <task id="LOCAL-00001" summary="almost works">
       <created>1653767977118</created>
@@ -93,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654193495825</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="отправка пакетами">
+      <created>1654193851445</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654193851445</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
