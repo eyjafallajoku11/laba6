@@ -30,14 +30,15 @@ public class Server {
             } catch(IOException e){
                 throw new RuntimeException(e);
             }
+        System.out.println("канал открыт");
+        try {
+            do {
+                channel = serverChannel.accept();
+            } while (Objects.isNull(channel));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("юзер подключен");
-            try {
-                do {
-                    channel = serverChannel.accept();
-                } while (Objects.isNull(channel));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         while (true){
             Request request = null;
             System.out.println("че-то происходит");
@@ -77,9 +78,9 @@ public class Server {
         try {
             for (int i=0; i < size; i++) {
                 bufferIn.clear();
-                channel.read(bufferIn);
+                int length = channel.read(bufferIn);
                 System.out.println("прочитали канал");
-                input = combineArray(input, bufferIn.array());
+                input = combineArray(input, bufferIn.array(), length);
                 bufferIn.clear();
             }
             request = deserialize(input);
@@ -105,10 +106,10 @@ public class Server {
         }
      return data;
     }
-    private static byte[] combineArray(byte[] arr1, byte[] arr2){
+    private static byte[] combineArray(byte[] arr1, byte[] arr2, int length){
         byte[] arr = new byte[arr1.length+arr2.length];
         System.arraycopy(arr1, 0, arr, 0, arr1.length);
-        System.arraycopy(arr2, 0, arr, arr1.length, arr2.length);
+        System.arraycopy(arr2, 0, arr, arr1.length, length);
         return arr;
     }
     public static int[] split(byte[] dataArray) {
