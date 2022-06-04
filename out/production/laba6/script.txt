@@ -1,0 +1,27 @@
+help
+open /Users/artem/Documents/proga/laba5/src/aboba.xml
+info
+show
+remove_key 69420
+insert 42069
+11
+11
+11
+11-11-1111
+11
+11
+11
+HUMIDSUBTROPICAL
+ITMOCRACY
+LOW
+Kiril
+11-11-1111 11:11:11
+show
+remove_all_by_government KLEPTOCRACY
+info
+history
+filter_less_than_governor
+Boris
+23-04-2004 11:11:11
+info
+save output.xml

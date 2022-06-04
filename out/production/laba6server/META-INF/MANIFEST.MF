@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+user.Main-Class: user.Main
+

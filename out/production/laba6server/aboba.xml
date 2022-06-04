@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<collection>
+	<City id="69420">
+		<name>Нижнекамск</name>
+		<coordinates>
+			<x>24.35</x>
+			<y>69.96</y>
+		</coordinates>
+		<creationDate>11-09-2003</creationDate>
+		<area>42</area>
+		<population>69420</population>
+		<metersAboveSeaLevel>69</metersAboveSeaLevel>
+		<climate>SUBARCTIC</climate>
+		<government>ITMOCRACY</government>
+		<standardOfLiving>LOW</standardOfLiving>
+		<governor>
+			<govName>Sergay</govName>
+			<birthday>10-10-1010 10:10:10</birthday>
+		</governor>
+	</City>
+	<City id="69420">
+		<name>Верхнекамск</name>
+		<coordinates>
+			<x>35.24</x>
+			<y>96.69</y>
+		</coordinates>
+		<creationDate>09-11-3021</creationDate>
+		<area>51</area>
+		<population>42069</population>
+		<metersAboveSeaLevel>96</metersAboveSeaLevel>
+		<climate>RAIN_FOREST</climate>
+		<government>KLEPTOCRACY</government>
+		<standardOfLiving>VERY_HIGH</standardOfLiving>
+		<governor>
+			<govName>VLADIMIR</govName>
+			<birthday>01-04-0001 20:28:33</birthday>
+		</governor>
+	</City>
+	<City id="69421">
+		<name>Верхнекамск</name>
+		<coordinates>
+			<x>35.24</x>
+			<y>96.69</y>
+		</coordinates>
+		<creationDate>09-11-3021</creationDate>
+		<area>51</area>
+		<population>42069</population>
+		<metersAboveSeaLevel>96</metersAboveSeaLevel>
+		<climate></climate>
+		<government>ITMOCRACY</government>
+		<standardOfLiving>VERY_HIGH</standardOfLiving>
+		<governor>
+			<govName>VLADIMIR</govName>
+			<birthday></birthday>
+		</governor>
+	</City>
+	<City id="69422">
+		<name>Верхнекамск</name>
+		<coordinates>
+			<x>35.24</x>
+			<y>96.69</y>
+		</coordinates>
+		<creationDate>09-11-3021</creationDate>
+		<area>51</area>
+		<population>42069</population>
+		<metersAboveSeaLevel>96</metersAboveSeaLevel>
+		<climate></climate>
+		<government>ITMOCRACY</government>
+		<standardOfLiving>VERY_HIGH</standardOfLiving>
+		<governor>
+			<govName>VLADIMIR</govName>
+			<birthday></birthday>
+		</governor>
+	</City>
+	<City id="69423">
+		<name></name>
+		<coordinates>
+			<x>35.24</x>
+			<y>96.69</y>
+		</coordinates>
+		<creationDate>09-11-3021</creationDate>
+		<area>51</area>
+		<population>42069</population>
+		<metersAboveSeaLevel>96</metersAboveSeaLevel>
+		<climate></climate>
+		<government>ITMOCRACY</government>
+		<standardOfLiving>VERY_HIGH</standardOfLiving>
+		<governor>
+			<govName>VLADIMIR</govName>
+			<birthday></birthday>
+		</governor>
+	</City>
+</collection>
