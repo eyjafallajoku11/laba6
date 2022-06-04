@@ -20,7 +20,6 @@ public class Server {
 
     private static ByteBuffer bufferIn;
     private static ByteBuffer[] bufferOut;
-
     public static void run(int port){
         System.out.println("ждём подключения");
         try {
@@ -43,6 +42,7 @@ public class Server {
             Request request = null;
             System.out.println("че-то происходит");
             int[] requestData = getRequestData();
+            System.out.println("данные полученные");
             request = getRequest(requestData);
             System.out.println(request);
             String answer;
