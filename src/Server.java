@@ -62,6 +62,7 @@ public class Server {
         try {
             for (int i=0; i<size; i++) {
                 channel.write(bufferOut[i]);
+                bufferOut[i].clear();
             }
         } catch (IOException e) {
             System.out.println("не отправляет");
@@ -75,6 +76,7 @@ public class Server {
         byte[] input = new byte[0];
         try {
             for (int i=0; i < size; i++) {
+                bufferIn.clear();
                 channel.read(bufferIn);
                 System.out.println("прочитали канал");
                 input = combineArray(input, bufferIn.array());
@@ -109,15 +111,20 @@ public class Server {
         System.arraycopy(arr2, 0, arr, arr1.length, arr2.length);
         return arr;
     }
-    public static int[] split(byte[] buffer) {
+    public static int[] split(byte[] dataArray) {
         int byteBufferSize = 1024;
-        int size = (int) Math.ceil((double) buffer.length / byteBufferSize);
+        int size = (int) Math.ceil((double) dataArray.length / byteBufferSize);
         int stop = byteBufferSize;
         bufferOut = new ByteBuffer[size];
         for (int i = 0; i < size; i++){
-            if (i == size-1 && buffer.length % byteBufferSize != 0) stop = (buffer.length % byteBufferSize);
+            if (i == size-1 && dataArray.length % byteBufferSize != 0) {
+                stop = (dataArray.length % byteBufferSize);
+            }
             byte[] temp = new byte[stop];
-            System.arraycopy(buffer, i * byteBufferSize, temp, 0, stop);
+            System.arraycopy(dataArray, i * byteBufferSize, temp, 0, stop);
+            if (!Objects.isNull(bufferOut[i])) {
+                bufferOut[i].clear();
+            }
             bufferOut[i] = ByteBuffer.wrap(temp);
         }
         return new int[] {byteBufferSize,size};
