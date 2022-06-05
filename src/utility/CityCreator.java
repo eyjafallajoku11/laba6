@@ -45,7 +45,7 @@ public class CityCreator {
     }
     public void create_city() throws Exception{
         if (!Objects.isNull(data[0]) && !Objects.isNull(data[1]) && !Objects.isNull(data[2]) && !Objects.isNull(data[3]) && !Objects.isNull(data[4])
-                && !Objects.isNull(data[5]) && !Objects.isNull(data[8]) && (Objects.isNull(data[13])==Objects.isNull(data[10]))) {
+                && !Objects.isNull(data[5]) && !Objects.isNull(data[8]) && (data[13].equals("0")==Objects.isNull(data[10]))) {
                 double x = Double.parseDouble(data[0]);      //[x,y,name,creation date,area,population,metersAboveSeaLevel,climate,government,standardOfLiving,govName,birthday]
                 double y = Double.parseDouble(data[1]);
                 if (x > -251 && y > -310) {
@@ -62,10 +62,12 @@ public class CityCreator {
                     if (!Objects.isNull(data[9])) city.setStandardOfLiving(data[9]);
                     if (!Objects.isNull(data[10])) {
                         Human hum = new Human(data[10]);
-                        if (!Objects.isNull(data[11])) {
+                        try {
                             String pattern = "dd-MM-yyyy HH:mm:ss";
                             DateTimeFormatter Parser = DateTimeFormatter.ofPattern(pattern).withZone(ZoneId.systemDefault());
                             hum.setBirthday(ZonedDateTime.parse(data[11],Parser));
+                        } catch (Exception e) {
+                            System.out.print("");
                         }
                         city.setGovernor(hum);
                     }

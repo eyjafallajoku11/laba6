@@ -30,40 +30,56 @@ public class Server {
                 throw new RuntimeException(e);
             }
         System.out.println("канал открыт");
-        try {
-            do {
-                channel = serverChannel.accept();
-            } while (Objects.isNull(channel));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("юзер подключен");
-        while (true){
-            Request request = null;
-            System.out.println("че-то происходит");
-            int[] requestData = getRequestData();
-            System.out.println("данные полученные");
-            request = getRequest(requestData);
-            System.out.println(request);
-            String answer;
-            answer = CommandManager.execute(request);
-            System.out.println("команда выполнена");
-            sendAnswer(answer);
+        while (true) {
+            try {
+                do {
+                    channel = serverChannel.accept();
+                } while (Objects.isNull(channel));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("клиент подключен");
+            while (channel.isConnected()) {
+                try {
+                    Request request = null;
+                    System.out.println("че-то происходит");
+                    int[] requestData = getRequestData();
+                    if (!Objects.isNull(requestData)) {
+                        System.out.println("данные получены");
+                        request = getRequest(requestData);
+                        System.out.println(request);
+                        String answer;
+                        answer = CommandManager.execute(request);
+                        System.out.println(answer);
+                        sendAnswer(answer);
+                    }
+                } catch (Exception e) {
+                    try {
+                        channel.close();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+            System.out.println("клиент отключен");
         }
     }
 
     private static void sendAnswer(String answer){
         int[] answerData = split(answer.getBytes());
+        System.out.println("разделили");
         try {
             channel.write(ByteBuffer.wrap(serialize(answerData)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         int size = answerData[1];
+        System.out.println("отправили данные");
         try {
             for (int i=0; i<size; i++) {
                 channel.write(bufferOut[i]);
                 bufferOut[i].clear();
+                System.out.println("пакет отправлен");
             }
         } catch (IOException e) {
             System.out.println("не отправляет");
@@ -74,14 +90,18 @@ public class Server {
         Request request;
         bufferIn = ByteBuffer.allocate(bufferData[0]);
         int size = bufferData[1];
+        System.out.println(size);
         byte[] input = new byte[0];
         try {
             for (int i=0; i < size; i++) {
                 bufferIn.clear();
-                int length = channel.read(bufferIn);
+                int length = 0;
+                System.out.println(bufferIn.position());
+//                while (bufferIn.position() == 0) {
+                    length = channel.read(bufferIn);
+//                }
                 System.out.println("прочитали канал");
                 input = combineArray(input, bufferIn.array(), length);
-                bufferIn.clear();
             }
             request = deserialize(input);
             System.out.println("дисериализовали");
@@ -94,10 +114,13 @@ public class Server {
         return request;
     }
     private static int[] getRequestData(){
-        int[] data;
+        int[] data = null;
         ByteBuffer byteBuffer = ByteBuffer.allocate(256);
         try {
-            channel.read(byteBuffer);
+            byteBuffer.clear();
+//            while (byteBuffer.position() == 0) {
+                channel.read(byteBuffer);
+//            }
             data = deserialize(byteBuffer.array());
         } catch (SocketException e) {
             throw new RuntimeException(e);
@@ -118,14 +141,11 @@ public class Server {
         int stop = byteBufferSize;
         bufferOut = new ByteBuffer[size];
         for (int i = 0; i < size; i++){
-            if (i == size-1 && dataArray.length % byteBufferSize != 0) {
+            if (i+1 == size && dataArray.length % byteBufferSize != 0) {
                 stop = (dataArray.length % byteBufferSize);
             }
             byte[] temp = new byte[stop];
             System.arraycopy(dataArray, i * byteBufferSize, temp, 0, stop);
-            if (!Objects.isNull(bufferOut[i])) {
-                bufferOut[i].clear();
-            }
             bufferOut[i] = ByteBuffer.wrap(temp);
         }
         return new int[] {byteBufferSize,size};
