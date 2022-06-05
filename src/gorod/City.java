@@ -1,5 +1,6 @@
 package gorod;
 
+import javax.lang.model.type.ArrayType;
 import java.time.LocalDate;
 
 import static java.lang.Math.sqrt;
@@ -63,17 +64,28 @@ public class City implements Comparable <City>{
 
     @Override
     public String toString(){
-        return  name+"\n"+
-                "ID="+this.id+"\n"+
-                "coords: " +this.coordinates.toString()+"\n"+
-                this.metersAboveSeaLevel.toString()+" meters above sea level\n"+
-                "creation date: "+this.creationDate.toString()+"\n"+
-                "area="+this.area+"\n"+
-                "population="+this.population.toString()+"\n"+
-                "climate: "+this.climate+"\n"+
-                "government: "+this.government+"\n"+
-                "standard of living: "+this.standardOfLiving+"\n"+
-                "governor: "+this.governor.toString();
+        StringBuilder build = new StringBuilder(name);
+        build.append("\n");
+        build.append("ID="+this.id+"\n");
+        build.append("coords: " + this.coordinates.toString()+"\n");
+        try{
+            build.append(this.metersAboveSeaLevel.toString()+" meters above sea level\n");
+        } catch (NullPointerException e){build.append("");}
+        build.append("creation date: "+this.creationDate.toString()+"\n");
+        build.append("area="+this.area+"\n");
+        build.append("population="+this.population.toString()+"\n");
+       try {
+           build.append("climate: " + this.climate + "\n");
+       } catch (NullPointerException e){build.append("");}
+                build.append     ("government: "+this.government+"\n");
+        try {
+            build.append("standard of living: " + this.standardOfLiving + "\n");
+             } catch (NullPointerException e){build.append("");}
+        try {
+            build.append("governor: " + this.governor.toString());
+        } catch (NullPointerException e){build.append("");}
+
+        return build.toString();
     }
 
     public void setId(long id){this.id=id;}
